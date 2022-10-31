@@ -1,0 +1,700 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{amsmath}
+\usepackage[left=2.25cm, right=2.25cm, top=2cm, bottom=2.5cm]{geometry}
+\usepackage{amssymb}
+\usepackage{setspace}
+\usepackage{booktabs}
+\usepackage{wrapfig}
+\usepackage{gensymb}
+\usepackage{xcolor}
+\usepackage{multirow}
+\usepackage{graphicx}
+\usepackage{subcaption}
+\usepackage{mwe}
+\usepackage{epstopdf}
+\usepackage{bm} % for bold math symbols
+\def\arraystretch{1.5}
+\definecolor{light-gray}{gray}{0.95}
+\newcommand{\code}[1]{\colorbox{light-gray}{\texttt{#1}}}
+\usepackage[parfill]{parskip}
+\usepackage{amsmath, esdiff} % used for math mode
+\renewcommand{\arraystretch}{2} % adds row spacing to tables
+
+\usepackage{scrextend} % for indentation 
+
+\usepackage{comment} % for comments now shown
+
+\usepackage{pgfplots} % plots 
+% for plots see https://www.overleaf.com/learn/latex/Pgfplots_package
+
+\newcommand{\Z}{\textbf{Z}} % method to easily repeat command 
+\newcommand{\N}{\textbf{N}}
+\newcommand{\La}{\mathcal{L}} % creates lagrangian 
+
+\renewcommand{\thesubsection}{\thesection.\alph{subsection}} %% subsection letters 
+
+
+\title{ECON 501 Homework \# 4}
+\author{Henry Williams\\ collaborated with Yaku, Fernando, Yuulin, Doubra}
+\date{October 2022}
+
+\begin{document}
+
+\maketitle
+
+
+
+%%%%%%%%%
+%% Q 1 %%
+%%%%%%%%%
+
+\section{}
+
+\colorbox{gray!30}{
+\begin{minipage}{\textwidth}
+Consider the following functions:\\
+
+\begin{itemize}
+    \item 3-input production function $y=x_1ln(x_2+1)+4x_3^{1/2}$
+    \item Utility function $x_2e^{x_1}$ 
+    \item Demand function $x_1=\dfrac{1}{2}\left( \dfrac{m}{p_1} \right)^2$
+\end{itemize}
+\end{minipage}
+}
+
+\subsection{}
+\colorbox{gray!30}{
+\begin{minipage}{\textwidth}
+Give the first partial derivatives
+\end{minipage}
+}
+
+\textbf{RESPONSE}
+
+\emph{Production}
+
+\begingroup
+\addtolength{\jot}{1em} % adds spacing
+\begin{align*}
+    \dfrac{\partial y}{\partial x_1} &=ln(x_2+1)\\
+    \dfrac{\partial y}{\partial x_2} &=\dfrac{x_1}{x_2+1}=x_1(x_2+1)^{-1}\\
+    \dfrac{\partial y}{\partial x_3} &=\dfrac{2}{x_3^{\frac{1}{2}}}
+\end{align*}
+\endgroup
+
+
+\emph{Utility}
+
+\begingroup
+\addtolength{\jot}{1em} % adds spacing
+\begin{align*}
+    \dfrac{\partial y}{\partial x_1} &=x_2e^{x_1}\\
+    \dfrac{\partial y}{\partial x_2} &=e^{x_1}\\
+\end{align*}
+\endgroup
+
+\emph{Demand}
+
+\begingroup
+\addtolength{\jot}{1em} % adds spacing
+\begin{align*}
+    \dfrac{\partial x_1}{\partial m} &=\dfrac{1}{p_1}\left( \dfrac{m}{p_1} \right)=\dfrac{m}{p_1^2}\\
+    \dfrac{\partial x_1}{\partial p_1} &=\dfrac{-m}{p_1^2}\left( \dfrac{m}{p_1} \right)= \dfrac{-m^2}{p_1^3}\\
+\end{align*}
+\endgroup
+
+
+\subsection{}
+\colorbox{gray!30}{
+\begin{minipage}{\textwidth}
+Give the Hessian matrix
+\end{minipage}
+}
+
+\textbf{RESPONSE}
+
+\emph{Production}
+
+$$
+    H =  \left[\arraycolsep=3pt\def\arraystretch{3}
+        \begin{array}{rrr}
+        \dfrac{\partial^2 y}{\partial x_1^2} & \dfrac{\partial^2 y}{\partial x_2 \partial x_1} & \dfrac{\partial^2 y}{\partial x_3 \partial x_1}  \\
+       \dfrac{\partial^2 y}{\partial x_1 \partial x_2} & \dfrac{\partial^2 y}{\partial x_2^2} & \dfrac{\partial^2 y}{\partial x_3 \partial x_2} \\
+        \dfrac{\partial^2 y}{\partial x_1 \partial x_3} &\dfrac{\partial^2 y}{\partial x_2 \partial x_3} & \dfrac{\partial^2 y}{\partial x_3^2}
+      \end{array}\right] =
+       \left[\arraycolsep=3pt\def\arraystretch{3}
+       \begin{array}{rrr}
+        0 & \dfrac{1}{x_2+1} &0  \\
+         \dfrac{1}{x_2+1} & \dfrac{-x_1}{(x_2+1)^{2}} & 0  \\
+        0 & 0 & \dfrac{1}{x_3^{\frac{3}{2}}}  
+      \end{array}
+      \right]
+$$
+
+
+\emph{Utility}
+
+$$
+    H =  \left[\arraycolsep=3pt\def\arraystretch{3}
+        \begin{array}{rr}
+        \dfrac{\partial^2 y}{\partial x_1^2} & \dfrac{\partial^2 y}{\partial x_2 \partial x_1}   \\
+       \dfrac{\partial^2 y}{\partial x_1 \partial x_2} & \dfrac{\partial^2 y}{\partial x_2^2}  
+      \end{array}\right] =
+       \left[\arraycolsep=3pt\def\arraystretch{3}
+       \begin{array}{rr}
+        x_2e^{x_1} & e^{x_1}  \\
+        e^{x_1} & 0
+      \end{array}
+      \right]
+$$
+
+\emph{Demand}
+
+$$
+    H =  \left[\arraycolsep=3pt\def\arraystretch{3}
+        \begin{array}{rr}
+        \dfrac{\partial^2 x_1}{\partial m^2} & \dfrac{\partial^2 x_1}{\partial p_1 \partial m}   \\
+       \dfrac{\partial^2 x_1}{\partial m \partial p_1} & \dfrac{\partial^2 x_1}{\partial p_1^2}  
+      \end{array}\right] =
+       \left[\arraycolsep=3pt\def\arraystretch{3}
+       \begin{array}{rr}
+        \dfrac{1}{p_1^2} & \dfrac{-2m}{p_1^3}  \\
+        \dfrac{-2m}{p_1^3} & \dfrac{3m^2}{p_1^4}
+      \end{array}
+      \right]
+$$
+
+\pagebreak
+\subsection{}
+\colorbox{gray!30}{
+\begin{minipage}{\textwidth}
+Comment on how Young’s Theorem applies
+\end{minipage}
+}
+
+\textbf{RESPONSE}
+
+According to Young's Theorem, given a function $f(x,y)$, we have that:
+
+$$ \dfrac{\partial ^2 f}{\partial y \partial x}= \dfrac{\partial ^2 f}{\partial x \partial y}  $$ 
+
+That is, the order of differentiation does not matter. This is illustrated in each of the functions above, where the cross partials for corresponding variables are equivalent.
+
+\subsection{}
+\colorbox{gray!30}{
+\begin{minipage}{\textwidth}
+State in words an economic interpretation of the meaning of each of the second derivatives in the matrix
+\end{minipage}
+}
+
+\textbf{RESPONSE}
+
+
+
+%%%%%%%%%%%%%%%%
+%% QUESTION 2 %%
+%%%%%%%%%%%%%%%%
+
+\pagebreak
+\section{}
+\colorbox{gray!30}{
+\begin{minipage}{\textwidth}
+Suppose a firm’s total revenue is $R = pq $ where $p$ is price and $q$ is quantity sold, and suppose in turn that quantity sold is a function of price, $q =q(p)$. Keeping in mind the Chain Rule, given an expression for the total differential of R, i.e., dR =
+\end{minipage}
+} \\
+
+\textbf{RESPONSE}
+
+Given a function $F(x,y)$, the \textbf{total differential} at point $(x^*,y^*)$ is:
+
+$$ DF(x^*,y^*) = \dfrac{\partial F}{\partial x} (x^*,y^*)dx + \dfrac{\partial F}{\partial y} (x^*,y^*)dy$$ 
+
+We have that: $ R=p \cdot q = p \cdot q(p) $, which is a function of one variable. Thus, the total differential at point $(p^*,q(p^*))$ is given by: 
+
+\begingroup
+\addtolength{\jot}{1em} % adds spacing
+\begin{align*}
+    DR(p^*,q(p^*)) &= \dfrac{\partial R}{\partial p} (p^*,q(p^*))dp  \\
+     &= \left[q(p^*)+p\cdot q'(p^*)\right]dp
+\end{align*}
+\endgroup
+
+Or with alternative notation:
+
+$$  = \left[q(p^*)+p\dfrac{dq}{dp}(p^*)\right]dp$$ 
+
+%%%%%%%%%%%%%%%%
+%% QUESTION 3 %%
+%%%%%%%%%%%%%%%%
+
+\pagebreak
+\section{}
+\colorbox{gray!30}{
+\begin{minipage}{\textwidth}
+Consider the utility function $U = 2 ln(x_1) + 3 ln(x_2)$. Find an expression for
+the Marginal Rate of Substitution in two ways:
+
+a) Solve for $x_2$ as a function of $x_1$, then take the derivative to get $\dfrac{dx_2}{dx_1}$.
+
+b) Write the total differential of $U$, set $dU = 0$, and solve for  $\dfrac{dx_2}{dx_1}$.
+\end{minipage}
+} \\
+
+\textbf{RESPONSE}
+
+a)
+
+We have that $ MRS_{(x_2,x_1)}= \dfrac{\Delta x_2}{ \Delta x_1}=\dfrac{dx_2}{dx_1} $
+
+Because we want to understand how $x_2$ changes w.r.t. a change in $x_1$, we hold utility constant at $U^0$. Then, rearranging we have: 
+
+
+\begingroup
+\addtolength{\jot}{1em} % adds spacing
+\begin{align*}
+    U^0 &= 2 \ln(x_1) + 3 \ln(x_2)\\
+    3 \ln(x_2) &= U^0 - 2 \ln(x_1)\\
+    \ln(x_2) &= \dfrac{U^0}{3}-\dfrac{2 \ln(x_1)}{3}
+\end{align*}
+\endgroup
+
+And differentiating w.r.t. $x_1$ gives:
+
+\begingroup
+\addtolength{\jot}{1em} % adds spacing
+\begin{align*}
+    \dfrac{d\ln(x_2^*)}{dx_1} &=\dfrac{-2}{3x_1^*}  \\
+    \dfrac{dx_2}{dx_1} \left( \dfrac{1}{x_2^*} \right) &=\dfrac{-2}{3x_1^*} \\
+    \dfrac{dx_2}{dx_1} &=-\dfrac{2x_2^*}{3x_1^*} 
+\end{align*}
+\endgroup
+
+b)
+
+\begingroup
+\addtolength{\jot}{1em} % adds spacing
+\begin{align*}
+     DU(x_1^*,y_2^*) &= \dfrac{\partial U}{\partial x_1} (x_1^*,x_2^*)dx_1 + \dfrac{\partial U}{\partial x_2} (x^*,y^*)dx_2 \\
+     &= \dfrac{2}{x_1^*}dx_1 + \dfrac{3}{x_2^*}dx_2    \quad \text{set equal to 0} \\
+    \dfrac{3}{x_2^*}dx_2  &= -\dfrac{2}{x_1^*}dx_1 \\
+    \dfrac{dx_2}{dx_1}  &= -\dfrac{2x_2^*}{3x_1^*}
+\end{align*}
+\endgroup
+
+Where the results from a) and b) are identical.
+
+%%%%%%%%%%%%%%%%
+%% QUESTION 4 %%
+%%%%%%%%%%%%%%%%
+
+\pagebreak
+\section{Simon and Blume 15.12}
+\colorbox{gray!30}{
+\begin{minipage}{\textwidth}
+Consider the function $f(x,y) = x^2 e^y$. \\
+a) What is the slope of the level set at $x=2,y=0$?\\
+b) In what direction should one move move from the point (2,0) in order to increase $f$ most quickly? Express your answer as a vector of length 1. 
+\end{minipage}
+} \\
+
+\textbf{RESPONSE}
+
+a) 
+
+According to Theorem 15.3, for a point $(x_0,y_0)$, the slope of $G(x,y)=c$ at that point is given by \footnote{See Simon and Blume for additional conditions.}: 
+
+$$ - \frac{\partial G / \partial x}{\partial G/\partial y} $$ 
+
+Correspondingly for $f(x,y)$, we have: 
+
+$$ - \left.\frac{2x e^y}{ x^2 e^y}\right|_{(x=2,y=0)} = - \frac{2(2) e^0}{ (2)^2 e^0}= - \frac{2(2) e^0}{ (2)^2 e^0}=-1$$ 
+
+
+b)
+
+The gradient vector $\nabla G(x,y)$ points in the direction of greatest increase. To identify the greatest increase of $f$ at the point $p=(2,0)$, expressed as a unit vector, we compute the gradient at point $p=(2,0)$, and divide it by the magnitude of the gradient evaluated at $p=(2,0)$. The unit vector of a vector is given by:
+
+$$ \overset{\rightarrow}{u}= \dfrac{\overset{\rightarrow}{t}}{||\overset{\rightarrow}{t}||} = \dfrac{(a,b)}{\sqrt{a^2+b^2}} $$ 
+
+The gradient vector evaluated at $p=(2,0)$ is:
+
+$$\nabla G(x,y) = 
+\left[\arraycolsep=2pt\def\arraystretch{2}
+        \begin{array}{r}
+       \partial G / \partial x  \\
+        \partial G/\partial y
+\end{array}\right] =
+\left[\arraycolsep=2pt\def\arraystretch{2}
+        \begin{array}{r}
+        2x e^y   \\
+         x^2 e^y 
+\end{array}\right]_{x=2,y=0}
+=
+\left[\arraycolsep=2pt\def\arraystretch{2}
+        \begin{array}{r}
+       4   \\
+        4
+\end{array}\right],
+$$
+
+where 
+
+$$|| \nabla G(2,0) || = 
+\left|\left| \left[\arraycolsep=2pt\def\arraystretch{2}
+        \begin{array}{r}
+       4   \\
+        4
+\end{array}\right] \right|\right|
+=4\sqrt{2}
+$$
+
+Thus, direction of greatest of greatest increase at point $(2,0)$, expressed as a unit vector is:
+
+The direction of greatest increase is given by:
+
+$$ 
+\dfrac{\nabla G(x,y)}{|| \nabla G(2,0) ||} =\dfrac{
+    \left[\arraycolsep=2pt\def\arraystretch{2}
+        \begin{array}{r}
+       4   \\
+        4
+    \end{array}\right]}{4\sqrt{2}}=
+    \left[\arraycolsep=2pt\def\arraystretch{2}
+        \begin{array}{r}
+       \dfrac{1}{\sqrt{2}}   \\
+        \dfrac{1}{\sqrt{2}}
+\end{array}\right]
+$$ 
+
+
+
+%%%%%%%%%%%%%%%%
+%% QUESTION 5 %%
+%%%%%%%%%%%%%%%%
+
+\pagebreak
+\section{Simon and Blume 15.16}
+\colorbox{gray!30}{
+\begin{minipage}{\textwidth}
+One solution of the system:
+
+$$x^3y-z=1$$
+$$x+y^2+z^3=6$$
+
+is $(x,y,z)=(1,2,1)$. Use calculus to estimate the corresponding $x$ and $y$ when $z=1.1$.
+\end{minipage}
+} \\
+
+\textbf{RESPONSE}
+
+Let $x$ and $y$ be the endogenous variables and $z$ the exogenous variable. Then we have a system of two equations and two unknown endogenous variables, which can be represented in general form as: 
+
+\begingroup
+\addtolength{\jot}{1em} % adds spacing
+\begin{align*}
+    F_1(x,y,z)=c_1\\
+    F_2(x,y,z)=c_2
+\end{align*}
+\endgroup
+
+Given a change $z$, $\Delta z$---with  $x$ and $y$ implicitly defined as funcions of $z$---the linear approximations of $x$ and $y$ are given by:
+
+\begingroup
+\addtolength{\jot}{1em} % adds spacing
+\begin{align*}
+    x & \approx x + \dfrac{\partial x}{ \partial z} \Delta z \\
+    y & \approx y + \dfrac{\partial y}{ \partial z} \Delta z 
+\end{align*}
+\endgroup
+
+Where we must identify $\dfrac{\partial x}{ \partial z}$ and $\dfrac{\partial y}{ \partial z}$.  First, the system has the linearization:
+
+\begingroup
+\addtolength{\jot}{1em} % adds spacing
+\begin{align}
+     \arraycolsep=3pt\def\arraystretch{3}
+    \begin{array}{r}
+        \dfrac{\partial F_1}{\partial x}dx + \dfrac{\partial F_1}{\partial y}dy +  \dfrac{\partial F_1}{\partial z}dz=0  \\
+        \dfrac{\partial F_2}{\partial x}dx + \dfrac{\partial F_2}{\partial y}dy + \dfrac{\partial F_2}{\partial z}dz=0
+    \end{array} 
+\end{align}
+\endgroup
+
+Or, moving the $z$ terms to the RHS and writing in matrix form:
+
+\begingroup
+\addtolength{\jot}{1em} % adds spacing
+\begin{align}
+    \left[\arraycolsep=3pt\def\arraystretch{3}
+        \begin{array}{rr}
+       \dfrac{\partial F_1}{\partial x}  & \dfrac{\partial F_1}{\partial y} \\
+        \dfrac{\partial F_2}{\partial x} & \dfrac{\partial F_2}{\partial y} 
+        \end{array}
+    \right]
+    \cdot
+        \left[\arraycolsep=2pt\def\arraystretch{2}
+        \begin{array}{r}
+          dx   \\
+           dy
+        \end{array}
+        \right]
+        =
+       - \left[\arraycolsep=2pt\def\arraystretch{2}
+        \begin{array}{r}
+          \dfrac{\partial F_1}{\partial z}dz   \\
+           \dfrac{\partial F_2}{\partial z}dz
+        \end{array}
+        \right]
+\end{align}
+\endgroup
+
+By the Linear Implicit Function Theorem, we can solve the system for $dx$ and $dy$ in terms of $dz$ if and only if the determinant of the coefficient matrix of $dx$ and $dy$ is nonzero---i.e. matrix is nonsingular. That is:
+
+$$ 
+   Det \left( \left[\arraycolsep=2pt\def\arraystretch{2}
+        \begin{array}{rr}
+      \dfrac{\partial F_1}{\partial x} & \dfrac{\partial F_1}{\partial y}  \\
+        \dfrac{\partial F_2}{\partial x} & \dfrac{\partial F_2}{\partial y}
+\end{array}\right] \right) \neq 0
+$$ 
+
+Then the solution is given by:
+
+\begingroup
+\addtolength{\jot}{1em} % adds spacing
+\begin{align}
+        \left[\arraycolsep=2pt\def\arraystretch{2}
+        \begin{array}{r}
+          dx   \\
+           dy
+        \end{array}
+        \right]
+        =
+       -
+        \left[\arraycolsep=3pt\def\arraystretch{3}
+            \begin{array}{rr}
+               \dfrac{\partial F_1}{\partial x}  & \dfrac{\partial F_1}{\partial y} \\
+                \dfrac{\partial F_2}{\partial x} & \dfrac{\partial F_2}{\partial y} 
+            \end{array}
+        \right]^{-1}
+       \left[\arraycolsep=2pt\def\arraystretch{2}
+        \begin{array}{r}
+          \dfrac{\partial F_1}{\partial z}dz   \\
+           \dfrac{\partial F_2}{\partial z}dz
+        \end{array}
+        \right]
+\end{align}
+\endgroup
+
+Further, the equation (3) can be used to find $\dfrac{\partial x}{\partial z}$ and $\dfrac{\partial y}{\partial z}$, which is given by \footnote{{\color{red}REVIEW THIS MORE}}:
+
+\begingroup
+\addtolength{\jot}{1em} % adds spacing
+\begin{align}
+        \left[\arraycolsep=3pt\def\arraystretch{3}
+            \begin{array}{rr}
+               \dfrac{\partial F_1}{\partial x}  & \dfrac{\partial F_1}{\partial y} \\
+                \dfrac{\partial F_2}{\partial x} & \dfrac{\partial F_2}{\partial y} 
+            \end{array}
+        \right]
+        \cdot
+        \left[\arraycolsep=2pt\def\arraystretch{2}
+        \begin{array}{r}
+          \dfrac{\partial x}{\partial z}   \\
+           \dfrac{\partial y}{\partial z}
+        \end{array}
+        \right]
+        =
+       -
+       \left[\arraycolsep=2pt\def\arraystretch{2}
+        \begin{array}{r}
+          \dfrac{\partial F_1}{\partial z}   \\
+           \dfrac{\partial F_2}{\partial z}
+        \end{array}
+        \right]
+\end{align}
+\endgroup
+
+A solution to (4) is found by:
+
+\begin{enumerate}
+    \item inverting the matrix of partials from the LHS of (4), or
+    \item applying Cramer's rule \footnote{Cramer's Rule:\\
+    
+    $x_i=\dfrac{det(B_i)}{det(A)}$, where $B_i$ is the matrix $A$ with the ith column replaced by the column vector $b$, in the system $Ax=b$.} to (4)
+\end{enumerate}
+
+Applying Cramer's rule gives:
+
+\begingroup
+\addtolength{\jot}{1em} % adds spacing
+\begin{align}
+        \dfrac{\partial x}{\partial z}
+        =
+        \dfrac{-Det\left(      
+            \left[\arraycolsep=3pt\def\arraystretch{3}
+            \begin{array}{rr}
+               \dfrac{\partial F_1}{\partial z}  & \dfrac{\partial F_1}{\partial y} \\
+                \dfrac{\partial F_2}{\partial z} & \dfrac{\partial F_2}{\partial y} 
+            \end{array}
+        \right] \right)}{Det\left(      
+            \left[\arraycolsep=3pt\def\arraystretch{3}
+            \begin{array}{rr}
+               \dfrac{\partial F_1}{\partial x}  & \dfrac{\partial F_1}{\partial y} \\
+                \dfrac{\partial F_2}{\partial x} & \dfrac{\partial F_2}{\partial y} 
+            \end{array}
+        \right] \right)}
+\end{align}
+\endgroup
+
+and 
+
+\begingroup
+\addtolength{\jot}{1em} % adds spacing
+\begin{align}
+        \dfrac{\partial y}{\partial z}
+        =
+        \dfrac{-Det\left(      
+            \left[\arraycolsep=3pt\def\arraystretch{3}
+            \begin{array}{rr}
+               \dfrac{\partial F_1}{\partial x}  & \dfrac{\partial F_1}{\partial z} \\
+                \dfrac{\partial F_2}{\partial x} & \dfrac{\partial F_2}{\partial z} 
+            \end{array}
+        \right] \right)}{Det\left(      
+            \left[\arraycolsep=3pt\def\arraystretch{3}
+            \begin{array}{rr}
+               \dfrac{\partial F_1}{\partial x}  & \dfrac{\partial F_1}{\partial y} \\
+                \dfrac{\partial F_2}{\partial x} & \dfrac{\partial F_2}{\partial y} 
+            \end{array}
+        \right] \right)}
+\end{align}
+\endgroup
+
+Given the system of equations of $F_1(x,y,z)=c_1$ and $F_2(x,y,z)=c_2$:
+
+\begingroup
+\addtolength{\jot}{1em} % adds spacing
+\begin{align*}
+    x^3y-z=1 \\
+    x+y^2+z^3=6,
+\end{align*}
+\endgroup
+
+we have that: 
+
+\begingroup
+\addtolength{\jot}{1em} % adds spacing
+\begin{align*}
+    \left.\dfrac{\partial F_1}{\partial x}\right|_{(1,2,1)} &=  \left.3x^2y\right|_{(1,2,1)}=6 \\
+    \left.\dfrac{\partial F_1}{\partial z}\right|_{(1,2,1)}&=  \left.-z\right|_{(1,2,1)}=-1 \\
+    \left.\dfrac{\partial F_1}{\partial y}\right|_{(1,2,1)} &=  \left.x^3\right|_{(1,2,1)}=1 \\
+    \left.\dfrac{\partial F_2}{\partial x}\right|_{(1,2,1)}  &=  \left.1\right|_{(1,2,1)}=1 \\
+    \left.\dfrac{\partial F_2}{\partial z}\right|_{(1,2,1)} &=  \left.3z^2\right|_{(1,2,1)}=3 \\
+    \left.\dfrac{\partial F_2}{\partial y}\right|_{(1,2,1)}& =  \left.2y\right|_{(1,2,1)}=4 \\
+\end{align*}
+\endgroup
+
+Then, 
+
+\begingroup
+\addtolength{\jot}{1em} % adds spacing
+\begin{align}
+        \dfrac{\partial x}{\partial z}
+        =
+        \dfrac{-Det\left(      
+            \left[\arraycolsep=2pt\def\arraystretch{2}
+            \begin{array}{rr}
+              -1  & 1 \\
+                3 & 4
+            \end{array}
+        \right] \right)}{Det\left(      
+            \left[\arraycolsep=2pt\def\arraystretch{2}
+            \begin{array}{rr}
+               6 & 1 \\
+               1 & 4 
+            \end{array}
+        \right] \right)}
+        =
+        \dfrac{7}{23}
+\end{align}
+\endgroup
+
+and 
+
+\begingroup
+\addtolength{\jot}{1em} % adds spacing
+\begin{align}
+        \dfrac{\partial y}{\partial z}
+        =
+        \dfrac{-Det\left(      
+            \left[\arraycolsep=3pt\def\arraystretch{3}
+            \begin{array}{rr}
+              6 & -1 \\
+               1 & 3
+            \end{array}
+        \right] \right)}{Det\left(      
+            \left[\arraycolsep=2pt\def\arraystretch{2}
+            \begin{array}{rr}
+               6 & 1 \\
+               1 & 4 
+            \end{array}
+        \right] \right)}
+        =
+        \dfrac{-19}{23}
+\end{align}
+\endgroup
+
+Lastly, we linear approximation is given by: 
+
+\begingroup
+\addtolength{\jot}{1em} % adds spacing
+\begin{align*}
+    x & \approx x + \dfrac{\partial x}{ \partial z} \Delta z = 1+\dfrac{7}{23}(0.1)=1.03\\
+    y & \approx y + \dfrac{\partial y}{ \partial z} \Delta z = 2-\dfrac{19}{23}(0.1)=1.91
+\end{align*}
+\endgroup
+
+%%%%%%%%%%%%%%%%
+%% QUESTION 6 %%
+%%%%%%%%%%%%%%%%
+
+\pagebreak
+\section{Simon and Blume 15.21}
+\colorbox{gray!30}{
+\begin{minipage}{\textwidth}
+The economy of Northern Saskatchewan is in equilibrium when the system of equations: 
+
+\begingroup
+\addtolength{\jot}{1em} % adds spacing
+\begin{align*}
+    2xz + xy + z - 2\sqrt{z}=11 \\
+    xyz=6
+\end{align*}
+\endgroup
+
+is satisfied. One solution of this set of equations is $(x,y,z)=(3,2,1)$, and Northern Saskatchewan is in equilibrium at this point. Suppose that the prime minister discovers that the variable $z$ (output of beaver pelts) can be controlled by simple decree. \\
+
+a) If the prime minister raises $z$ to 1.1, use calculus to estimate the change in $x$ and $y$. \\
+
+b) IF $x$ were in the control of the prime minister and not $y$ or $z$, explain why you cannot use this method to estimate the effect of reducing $x$.
+\end{minipage}
+} \\
+
+\textbf{RESPONSE}
+
+a) same method as prior question 
+
+b) two equations but only ONE endog unknown. coeff matrix non-invertible 
+%%%%%%%%%%%%%%%%
+%% QUESTION 7 %%
+%%%%%%%%%%%%%%%%
+
+\pagebreak
+\section{Simon and Blume 15.24}
+
+
+
+\end{document}
